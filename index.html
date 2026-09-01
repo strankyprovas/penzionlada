@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Penzion Lada — ubytování v secesní vile v Ústí nad Labem (Klíše)</title>
+  <meta name="description" content="Penzion Lada — klidné ubytování v secesní vile z roku 1905 ve čtvrti Klíše, 15 minut pěšky od centra Ústí nad Labem. Nekuřácké pokoje a apartmány, parkování i wifi zdarma." />
+  <meta name="theme-color" content="#f6ede5" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============ TOKENS ============ */
+    :root {
+      --bg:          #f6ede5;
+      --bg-2:        #efece7;
+      --bg-warm:     #efe3d2;
+      --bg-warm-2:   #f6f0e7;
+      --ink:         #1f2630;
+      --ink-soft:    rgba(31,38,48,.92);
+      --muted:       rgba(31,38,48,.62);
+      --muted-2:     rgba(31,38,48,.45);
+      --accent:      #ff7a2f;
+      --btn:         #2f3947;
+      --card:        #fff;
+      --rule:        rgba(31,38,48,.1);
+      --shadow:      0 18px 60px rgba(17,24,39,.2);
+      --shadow-soft: 0 10px 30px rgba(17,24,39,.12);
+      --radius-xl:   28px;
+      --radius-lg:   20px;
+      --radius:      16px;
+      --wrap:        1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--ink);
+      background: #fff;
+      line-height: 1.6;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============ TYPOGRAPHY ============ */
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: clamp(44px, 5.5vw, 68px); font-weight: 800; }
+    h2 { font-size: clamp(34px, 4vw, 52px); font-weight: 800; }
+    h3 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 700; }
+    .kicker {
+      font-size: 13px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* ============ LAYOUT ============ */
+    .container { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+    /* ============ BUTTONS ============ */
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      height: 56px;
+      padding: 0 16px 0 22px;
+      border-radius: var(--radius);
+      background: var(--btn);
+      color: #fff;
+      font-weight: 700;
+      font-size: .95rem;
+      box-shadow: 0 16px 46px rgba(17,24,39,.18);
+      border: 1px solid rgba(255,255,255,.1);
+      transition: transform .15s, box-shadow .15s;
+      cursor: pointer;
+    }
+    .btn-dark:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .btn-dark .bicon {
+      width: 36px; height: 36px;
+      border-radius: 999px;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,.12);
+    }
+    .btn-dark .bicon svg { width: 16px; height: 16px; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 56px;
+      padding: 0 22px;
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: .95rem;
+      border: 1.5px solid var(--rule);
+      transition: all .15s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: sticky;
+      top: 0; z-index: 50;
+      background: rgba(246,237,229,.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(17,24,39,.08);
+      box-shadow: 0 2px 16px rgba(17,24,39,.07);
+      color: var(--ink);
+      transition: box-shadow .25s;
+    }
+    .nav.scrolled {
+      box-shadow: 0 8px 28px rgba(17,24,39,.12);
+    }
+    .nav-inner {
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: .01em;
+      color: inherit;
+      white-space: nowrap;
+    }
+    .brand em { font-style: normal; color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--ink);
+      opacity: .75;
+      padding: 8px 2px;
+      border-bottom: 2px solid transparent;
+      transition: opacity .2s, border-color .2s;
+    }
+    .nav-links a:hover { opacity: 1; border-color: var(--accent); color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--ink);
+      opacity: .75;
+      white-space: nowrap;
+    }
+    .nav-pill {
+      height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .85rem;
+      font-weight: 700;
+      background: var(--btn);
+      border: 1px solid rgba(255,255,255,.1);
+      color: #fff;
+      transition: all .2s;
+    }
+    .nav-pill:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: currentColor; border-radius: 2px; transition: all .3s;
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      padding: 14px 24px 20px;
+      border-top: 1px solid var(--rule);
+      background: rgba(246,237,229,.97);
+      gap: 2px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      padding: 10px 12px;
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--ink);
+      border-radius: 10px;
+      transition: background .2s;
+    }
+    .mobile-nav a:hover { background: var(--bg-2); }
+
+    /* ============ HERO ============ */
+    .hero-wrap {
+      position: relative;
+      isolation: isolate;
+      min-height: 92vh;
+      background: var(--bg);
+      overflow: clip;
+    }
+    .hero-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('photos/villa-1.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+      transform: scale(1.02);
+    }
+    .hero-wrap::after {
+      content: '';
+      position: absolute; inset: 0; z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.32) 50%, rgba(0,0,0,.52) 100%),
+        rgba(0,0,0,.28);
+    }
+    .hero {
+      padding: 48px 0 72px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+      align-items: center;
+      min-height: calc(92vh - 84px);
+    }
+    .hero-left { max-width: 580px; }
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .hero-stars { display: flex; gap: 4px; }
+    .hero-stars span { font-size: 20px; color: var(--accent); }
+    .hero-score {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.92);
+    }
+    .hero-reviews {
+      font-size: .9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.75);
+    }
+    .hero h1 {
+      color: rgba(255,255,255,.94);
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.78);
+      line-height: 1.75;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      height: 58px;
+      padding: 0 18px 0 24px;
+      border-radius: var(--radius);
+      background: var(--btn);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.1);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 22px 70px rgba(17,24,39,.3); }
+    .hero-cta .arrow {
+      width: 38px; height: 38px;
+      border-radius: 999px;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,.12);
+    }
+    .hero-cta .arrow svg { width: 18px; height: 18px; }
+    .hero-right { display: flex; justify-content: flex-end; }
+    .hero-card {
+      width: min(520px, 100%);
+      aspect-ratio: 1/1;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .hero-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+    .hero-card img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.03); }
+
+    /* ============ FEATURES ============ */
+    .features {
+      background: var(--bg-2);
+      padding: 84px 0 58px;
+      position: relative;
+      overflow: hidden;
+    }
+    .features::before {
+      content: '';
+      position: absolute;
+      left: 50%; top: -140px;
+      transform: translateX(-50%);
+      width: 760px; height: 760px;
+      border-radius: 999px;
+      border: 18px solid rgba(255,122,47,.18);
+      pointer-events: none;
+    }
+    .features-kicker { margin-bottom: 32px; }
+    .card-scroller {
+      display: flex;
+      gap: 28px;
+      overflow-x: auto;
+      padding: 16px 24px 28px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(17,24,39,.35) rgba(17,24,39,.08);
+    }
+    .card-scroller::-webkit-scrollbar { height: 10px; }
+    .card-scroller::-webkit-scrollbar-track { background: rgba(17,24,39,.08); border-radius: 999px; }
+    .card-scroller::-webkit-scrollbar-thumb { background: rgba(17,24,39,.35); border-radius: 999px; }
+    .feat-card {
+      flex: 0 0 420px;
+      min-height: 280px;
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 16px 40px rgba(17,24,39,.1);
+      padding: 34px 34px 28px;
+      scroll-snap-align: start;
+    }
+    .feat-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .feat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .feat-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .feat-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ============ POKOJE ============ */
+    .rooms {
+      background: var(--bg-warm);
+      padding: 84px 0 96px;
+      overflow: hidden;
+    }
+    .rooms-header { margin-bottom: 48px; }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .room-card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(31,38,48,.07);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 28px 28px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .room-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .room-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .room-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      color: var(--ink-soft);
+    }
+    .room-capacity {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(255,122,47,.1);
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .room-desc {
+      font-size: .93rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .room-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+    }
+    .room-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .87rem;
+      color: rgba(31,38,48,.75);
+      font-weight: 500;
+    }
+    .room-feature::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .room-price {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .room-price small { font-family: Inter, sans-serif; font-size: .82rem; font-weight: 600; color: var(--muted); }
+
+    /* hero badges (nahrazuje smyšlené hodnocení) */
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.22);
+      color: rgba(255,255,255,.95);
+      font-size: .82rem; font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ceník tabulka */
+    .pricelist { display: grid; gap: 10px; max-width: 720px; margin: 0 auto; }
+    .price-row {
+      display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline;
+      padding: 14px 20px; background: var(--card); border-radius: var(--radius);
+      box-shadow: var(--shadow-soft); border: 1px solid rgba(31,38,48,.06);
+    }
+    .price-row .pname { font-weight: 600; color: var(--ink-soft); font-size: .96rem; }
+    .price-row .pval { font-weight: 800; color: var(--accent); white-space: nowrap; font-size: 1.02rem; }
+    .price-note { max-width: 720px; margin: 22px auto 0; color: var(--muted); font-size: .88rem; line-height: 1.7; }
+    .price-note strong { color: var(--ink-soft); }
+
+    /* ============ O PENZION ============ */
+    .about-section {
+      background: var(--bg-warm-2);
+      padding: 92px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-section::before {
+      content: '';
+      position: absolute;
+      left: 50%; top: -240px;
+      transform: translateX(-50%);
+      width: 900px; height: 900px;
+      border-radius: 999px;
+      border: 18px solid rgba(255,122,47,.12);
+      pointer-events: none;
+    }
+    .about-grid {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-media { display: grid; gap: 18px; }
+    .about-img {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+    .about-img--big { aspect-ratio: 16/10; }
+    .about-img--small { aspect-ratio: 16/11; }
+    .about-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .6s; }
+    .about-img:hover img { transform: scale(1.06); }
+    .about-text .kicker { margin-bottom: 14px; }
+    .about-text h2 { margin-bottom: 16px; }
+    .about-text p { color: var(--muted); font-size: 1.1rem; line-height: 1.75; margin-bottom: 18px; }
+    .about-bullets {
+      padding-left: 20px;
+      color: rgba(31,38,48,.72);
+      line-height: 1.7;
+      font-size: .95rem;
+      margin-bottom: 28px;
+    }
+    .about-bullets li::marker { color: var(--accent); }
+
+    /* ============ OKOLÍ ============ */
+    .around {
+      padding: 92px 0;
+      background:
+        radial-gradient(720px 720px at 18% 30%, rgba(255,122,47,.1), transparent 62%),
+        radial-gradient(860px 860px at 82% 55%, rgba(255,122,47,.08), transparent 62%),
+        #fff;
+    }
+    .around-header { margin-bottom: 36px; }
+    .around-header h2 { margin-top: 10px; margin-bottom: 12px; }
+    .around-header p { color: var(--muted); font-size: 1.1rem; max-width: 600px; }
+    .around-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .around-card {
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(246,240,231,.8));
+      box-shadow: var(--shadow-soft);
+      padding: 26px 24px;
+      border: 1px solid rgba(31,38,48,.06);
+    }
+    .around-head {
+      display: flex; gap: 12px; align-items: center;
+      margin-bottom: 18px;
+    }
+    .around-icon {
+      width: 42px; height: 42px;
+      display: grid; place-items: center;
+      border-radius: 14px;
+      background: rgba(255,122,47,.12);
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+    .around-card h3 {
+      font-family: Inter, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .around-list { display: grid; gap: 12px; }
+    .around-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: start;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(31,38,48,.08);
+      font-size: .9rem;
+    }
+    .around-item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .around-item-name { color: rgba(31,38,48,.82); font-weight: 600; }
+    .around-item-dist { color: var(--muted-2); font-weight: 700; white-space: nowrap; }
+    .around-photos { display: grid; gap: 14px; margin-top: 8px; }
+    .around-photo {
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 16/8;
+      box-shadow: 0 12px 36px rgba(17,24,39,.1);
+    }
+    .around-photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .6s; }
+    .around-photo:hover img { transform: scale(1.06); }
+
+    /* ============ RECENZE MARQUEE ============ */
+    .testimonials {
+      padding: 96px 0;
+      overflow: hidden;
+      background:
+        radial-gradient(820px 820px at 18% 30%, rgba(255,122,47,.12), transparent 62%),
+        radial-gradient(980px 980px at 82% 58%, rgba(255,122,47,.08), transparent 62%),
+        var(--bg-warm);
+      position: relative;
+    }
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      left: 50%; top: 300px;
+      transform: translateX(-50%);
+      width: 1100px; height: 1100px;
+      border-radius: 999px;
+      border: 18px solid rgba(255,122,47,.14);
+      pointer-events: none;
+    }
+    .testi-header {
+      text-align: center;
+      position: relative; z-index: 1;
+      margin-bottom: 56px;
+    }
+    .testi-header h2 { margin-bottom: 14px; }
+    .testi-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .testi-stars span { color: var(--accent); font-size: 1.2rem; }
+    .marquee {
+      position: relative; z-index: 1;
+      overflow: hidden;
+      padding: 16px 0 10px;
+    }
+    .marquee-track {
+      display: flex;
+      align-items: flex-start;
+      gap: 36px;
+      will-change: transform;
+      animation: marquee-scroll 38s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .rev-card {
+      flex: 0 0 340px;
+      background: var(--card);
+      border-radius: 36px;
+      box-shadow: 0 18px 55px rgba(17,24,39,.12);
+      padding: 40px 40px 32px;
+    }
+    .rev-stars { color: var(--accent); font-size: 1.5rem; letter-spacing: 3px; margin-bottom: 16px; }
+    .rev-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--ink-soft);
+    }
+    .rev-text { font-size: .93rem; line-height: 1.55; color: var(--muted); margin-bottom: 24px; }
+    .rev-author { font-weight: 800; color: var(--ink-soft); font-size: 1rem; }
+    .rev-date { font-size: .8rem; color: var(--muted-2); font-weight: 600; margin-top: 4px; }
+    .marquee-fade-l, .marquee-fade-r {
+      position: absolute; top: 0; bottom: 0;
+      width: 160px; pointer-events: none;
+    }
+    .marquee-fade-l { left: 0; background: linear-gradient(90deg, var(--bg-warm), rgba(239,227,210,0)); }
+    .marquee-fade-r { right: 0; background: linear-gradient(270deg, var(--bg-warm), rgba(239,227,210,0)); }
+
+    /* ============ KONTAKT ============ */
+    .contact { background: var(--bg); padding: 92px 0; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-text .kicker { margin-bottom: 14px; }
+    .contact-text h2 { margin-bottom: 16px; }
+    .contact-text p { color: var(--muted); font-size: 1.05rem; margin-bottom: 32px; }
+    .contact-items { display: flex; flex-direction: column; gap: 14px; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--bg-2);
+      border-radius: var(--radius);
+      border: 1px solid var(--rule);
+    }
+    .contact-icon {
+      width: 40px; height: 40px;
+      background: var(--btn);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1rem;
+    }
+    .contact-item small {
+      font-size: .72rem;
+      color: var(--muted-2);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 600;
+      display: block;
+    }
+    .contact-item strong { font-size: .95rem; display: block; margin-top: 2px; }
+    .contact-map {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      height: 420px;
+      border: 1px solid var(--rule);
+      box-shadow: var(--shadow-soft);
+    }
+    .contact-map iframe { width: 100%; height: 100%; border: none; }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.7);
+      padding: 64px 0 28px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .brand { color: rgba(255,255,255,.9); font-size: 1.3rem; }
+    .footer-brand p { font-size: .88rem; line-height: 1.7; margin-top: 12px; max-width: 300px; }
+    .footer-col h4 {
+      font-family: Inter, sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul a { font-size: .88rem; transition: color .2s; }
+    .footer-col ul a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .82rem;
+    }
+    .footer-bottom a { color: var(--accent); }
+
+    /* ============ REVEAL ============ */
+    [data-r] { opacity: 0; transform: translateY(20px); transition: opacity .55s, transform .55s; }
+    [data-r].in { opacity: 1; transform: none; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 980px) {
+      .nav-links, .nav-phone { display: none; }
+      .hamburger { display: flex; }
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; min-height: unset; }
+      .hero-right { justify-content: flex-start; }
+      .hero-card { aspect-ratio: 16/10; width: 100%; max-width: 100%; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .around-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .rooms-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .feat-card { flex-basis: 86vw; }
+      .about-row { grid-template-columns: 1fr; }
+      .hero-cta { width: 100%; justify-content: space-between; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .hero { padding: 32px 0 48px; }
+      .features { padding: 48px 0 36px; }
+      .rooms { padding: 48px 0; }
+      .around { padding: 48px 0; }
+      .testimonials { padding: 48px 0; }
+      .contact { padding: 48px 0; }
+      footer { padding: 36px 0 20px; }
+    }
+  
+/* ===== GALERIE ===== */
+.gallery{padding:96px 0;background:var(--bg-warm)}
+.gal-header{max-width:640px;margin:0 0 34px}
+.gal-header h2{margin:6px 0 10px}
+.gal-header p{color:var(--muted);margin:0}
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:14px;
+}
+.gal-item{
+  margin:0;position:relative;overflow:hidden;cursor:zoom-in;
+  border-radius:var(--radius);box-shadow:var(--shadow-soft);
+  aspect-ratio:4/3;background:#e8ddd0;
+}
+.gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.gal-item:hover img{transform:scale(1.05)}
+.gal-item::after{
+  content:attr(data-popis);
+  position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;
+  font-size:.78rem;line-height:1.3;color:#fff;
+  background:linear-gradient(transparent,rgba(20,14,8,.78));
+  opacity:0;transition:opacity .3s ease;
+}
+.gal-item:hover::after{opacity:1}
+/* Jednotná mřížka. Zkoušel jsem každou sedmou dlaždici přes dva sloupce,
+   ale při aspect-ratio 4/3 u ostatních vznikaly v řadách prázdné díry. */
+@media(max-width:640px){
+  .gal-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+}
+
+/* lightbox */
+.gal-box{
+  position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;
+  background:rgba(16,11,6,.94);padding:24px;
+}
+.gal-box[hidden]{display:none}
+.gal-box-in{margin:0;max-width:min(1100px,92vw);max-height:88vh;display:flex;flex-direction:column;gap:12px}
+.gal-box-in img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:10px;display:block;margin:0 auto}
+.gal-box-in figcaption{color:rgba(255,255,255,.82);font-size:.85rem;text-align:center}
+.gal-zavrit,.gal-sip{
+  position:absolute;background:rgba(255,255,255,.1);color:#fff;border:0;cursor:pointer;
+  width:46px;height:46px;border-radius:50%;font-size:28px;line-height:1;
+  display:flex;align-items:center;justify-content:center;transition:background .2s;
+}
+.gal-zavrit:hover,.gal-sip:hover{background:rgba(255,255,255,.24)}
+.gal-zavrit{top:20px;right:20px}
+.gal-sip--vlevo{left:20px;top:50%;transform:translateY(-50%)}
+.gal-sip--vpravo{right:20px;top:50%;transform:translateY(-50%)}
+@media(max-width:640px){
+  .gal-sip{width:38px;height:38px;font-size:22px}
+  .gal-sip--vlevo{left:8px}.gal-sip--vpravo{right:8px}
+}
+</style>
+</head>
+<body>
+<!-- ===== NAV ===== -->
+<nav class="nav" id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="brand">Penzion Lada</a>
+      <div class="nav-links">
+        <a href="#pokoje">Pokoje</a>
+        <a href="#onas">O nás</a>
+        <a href="#galerie">Galerie</a>
+          <a href="#okoli">Okolí</a>
+        <a href="#cenik">Ceník</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <div class="nav-right">
+        <a href="tel:+420602410569" class="nav-phone">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+          +420 602 410 569
+        </a>
+        <a href="#kontakt" class="nav-pill">Rezervace →</a>
+        <button class="hamburger" id="hambBtn" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#pokoje">Pokoje</a>
+    <a href="#onas">O nás</a>
+    <a href="#okoli">Okolí</a>
+    <a href="#cenik">Ceník</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="tel:+420602410569">📞 +420 602 410 569</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="hero-wrap">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-left" data-r>
+          <div class="hero-badges">
+            <span class="hero-badge">🏛️ Secesní vila z roku 1905</span>
+            <span class="hero-badge">📍 Klíše, Ústí nad Labem</span>
+            <span class="hero-badge">🅿️ Parkování zdarma</span>
+          </div>
+          <h1>Klidné ubytování v secesní vile</h1>
+          <p class="hero-sub">Penzion Lada v tiché vilové čtvrti Klíše — 15 minut pěšky od centra Ústí nad Labem, kousek od parku a cyklostezky. Útulné nekuřácké pokoje a apartmány s vlastní koupelnou.</p>
+          <a href="#kontakt" class="hero-cta">
+            Rezervovat pobyt
+            <span class="arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="hero-right" data-r>
+          <div class="hero-card">
+            <img src="photos/villa-2.jpg" alt="Penzion Lada — secesní vila z roku 1905, Ústí nad Labem" loading="eager" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== FEATURES ===== -->
+<section class="features">
+  <div class="container features-kicker" data-r>
+    <div class="kicker">Proč si vybrat nás</div>
+  </div>
+  <div class="card-scroller" style="padding-left:max(24px, calc((100vw - 1200px)/2 + 24px))">
+    <div class="feat-card" data-r>
+      <div class="feat-icon">📍</div>
+      <div class="feat-num">Klíše</div>
+      <div class="feat-title">Klidná vilová čtvrť</div>
+      <p class="feat-text">1,5 km od centra Ústí nad Labem — pěšky za 15 minut. Hned vedle je park, cyklostezka, plavecký i zimní stadion.</p>
+    </div>
+    <div class="feat-card" data-r>
+      <div class="feat-icon">🅿️</div>
+      <div class="feat-num">Zdarma</div>
+      <div class="feat-title">Parkování i wifi</div>
+      <p class="feat-text">Vlastní parkoviště přímo u penzionu — parkujete zdarma. Připojení k wifi je pro hosty rovněž bez poplatku.</p>
+    </div>
+    <div class="feat-card" data-r>
+      <div class="feat-icon">🚭</div>
+      <div class="feat-num">Nekuřácké</div>
+      <div class="feat-title">Čisté a klidné</div>
+      <p class="feat-text">Všechny pokoje jsou nekuřácké. Dva pokoje mají balkon, kde je kouření možné — pro klid ostatních hostů.</p>
+    </div>
+    <div class="feat-card" data-r>
+      <div class="feat-icon">🛏️</div>
+      <div class="feat-num">8 lůžek</div>
+      <div class="feat-title">Pokoje i apartmány</div>
+      <p class="feat-text">Jedno-, dvou- a třílůžkové pokoje i apartmány. Každý s vlastní sprchou, SAT TV, lednicí, mikrovlnkou a konvicí.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POKOJE ===== -->
+<section class="rooms" id="pokoje">
+  <div class="container">
+    <div class="rooms-header" data-r>
+      <div class="kicker">Ubytování</div>
+      <h2>Naše pokoje</h2>
+    </div>
+    <div class="rooms-grid">
+      <div class="room-card" data-r>
+        <div class="room-icon">🚪</div>
+        <div class="room-name">Pokoj č. 2</div>
+        <span class="room-capacity">1 osoba · 1. patro</span>
+        <p class="room-desc">Jednolůžkový pokoj v prvním patře, se sprchou a vlastním balkonem — jedním ze dvou, kde je možné kouřit.</p>
+        <div class="room-features">
+          <div class="room-feature">Vlastní sprcha</div>
+          <div class="room-feature">Balkon</div>
+          <div class="room-feature">SAT TV, wifi zdarma</div>
+          <div class="room-feature">Lednice, mikrovlnka, konvice</div>
+        </div>
+        <div class="room-price">769 Kč <small>/ noc</small></div>
+      </div>
+      <div class="room-card" data-r>
+        <div class="room-icon">🔑</div>
+        <div class="room-name">Pokoj č. 5</div>
+        <span class="room-capacity">1–2 osoby · vlastní vchod</span>
+        <p class="room-desc">Jedno- až dvoulůžkový pokoj s vlastním vchodem a malou předsíňkou. Zajistí hostům naprosté soukromí.</p>
+        <div class="room-features">
+          <div class="room-feature">Vlastní vchod, 100% soukromí</div>
+          <div class="room-feature">Předsíňka se skříní</div>
+          <div class="room-feature">Lednice, mikrovlnka, konvice</div>
+          <div class="room-feature">Vlastní sprcha, SAT TV, wifi</div>
+        </div>
+        <div class="room-price">799–919 Kč <small>/ noc</small></div>
+      </div>
+      <div class="room-card" data-r>
+        <div class="room-icon">🏡</div>
+        <div class="room-name">Apartmán č. 6</div>
+        <span class="room-capacity">1–3 osoby · suterén</span>
+        <p class="room-desc">Apartmán v suterénu, přesto vysoko nad úrovní ulice. Ložnice a obývací část s velkým stolem a malou kuchyňkou.</p>
+        <div class="room-features">
+          <div class="room-feature">Oddělená ložnice + obývací část</div>
+          <div class="room-feature">Malá kuchyňka (bez vaření)</div>
+          <div class="room-feature">Vlastní sprcha</div>
+          <div class="room-feature">SAT TV, wifi zdarma</div>
+        </div>
+        <div class="room-price">919–1 109 Kč <small>/ noc</small></div>
+      </div>
+      <div class="room-card" data-r>
+        <div class="room-icon">🌅</div>
+        <div class="room-name">Apartmán v 1. patře</div>
+        <span class="room-capacity">až 3 osoby · s balkonem</span>
+        <p class="room-desc">Prostorný apartmán se dvěma ložnicemi, balkonem a malou kuchyňkou — ideální pro rodinu nebo skupinu přátel.</p>
+        <div class="room-features">
+          <div class="room-feature">Dvě oddělené ložnice</div>
+          <div class="room-feature">Balkon</div>
+          <div class="room-feature">Malá kuchyňka</div>
+          <div class="room-feature">Vlastní sprcha, SAT TV, wifi</div>
+        </div>
+        <div class="room-price">1 079–1 299 Kč <small>/ noc</small></div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;" data-r>
+      <a href="#cenik" class="btn-dark">
+        Kompletní ceník
+        <span class="bicon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O PENZION ===== -->
+<section class="about-section" id="onas">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-media" data-r>
+        <div class="about-img about-img--big">
+          <img src="photos/pokoj-5.jpg" alt="Penzion Lada – pokoj č. 5" loading="lazy" />
+        </div>
+        <div class="about-row">
+          <div class="about-img about-img--small">
+            <img src="photos/pokoj-2.jpg" alt="Penzion Lada – pokoj" loading="lazy" />
+          </div>
+          <div class="about-img about-img--small">
+            <img src="photos/interier.jpg" alt="Penzion Lada – interiér pokoje" loading="lazy" />
+          </div>
+        </div>
+      </div>
+      <div class="about-text" data-r>
+        <div class="kicker">O nás</div>
+        <h2>Secesní vila z roku 1905</h2>
+        <p>Penzion Lada je zřízen v půvabné secesní vile z roku 1905. Budova stojí v tiché vilové čtvrti Klíše, jen 1,5 km od centra Ústí nad Labem — pěšky to zvládnete za patnáct minut. Kolem najdete park, cyklostezku i sportovní vyžití.</p>
+        <ul class="about-bullets">
+          <li>Osobní přístup majitelky Lady Heilmannové</li>
+          <li>Nekuřácké pokoje a apartmány, celkem 8 lůžek</li>
+          <li>Vlastní parkoviště u penzionu — zdarma</li>
+          <li>Klidná lokalita blízko parku a cyklostezky</li>
+          <li>V zimě kousek do lyžařského střediska Telnice</li>
+        </ul>
+        <a href="#kontakt" class="btn-dark">
+          Kontaktovat nás
+          <span class="bicon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== GALERIE ===== -->
+<section class="gallery" id="galerie">
+  <div class="container">
+    <div class="gal-header" data-r>
+      <div class="kicker">Fotogalerie</div>
+      <h2>Podívejte se k nám</h2>
+      <p>Všechny fotky jsou z penzionu — pokoje, apartmán i budova. Kliknutím si je zvětšíte.</p>
+    </div>
+    <div class="gal-grid" id="galMrizka" data-r>
+        <figure class="gal-item" data-gal="0" data-popis="Pokoj č. 2">
+          <img src="photos/lada-01-pokoj-c-2.jpg" alt="Pokoj č. 2" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="1" data-popis="Apartmán v 1.patře má 2 ložnice až pro 3 osoby,s balkonem a malou kuchyňkou · Apartmán v 1. patře">
+          <img src="photos/lada-02-apartman-v-1-patre.jpg" alt="Apartmán v 1.patře má 2 ložnice až pro 3 osoby,s balkonem a malou kuchyňkou · Apartmán v 1. patře" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="2" data-popis="Apartmán v 1. patře">
+          <img src="photos/lada-03-apartman-v-1-patre.jpg" alt="Apartmán v 1. patře" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="3" data-popis="Apartmán v 1. patře">
+          <img src="photos/lada-04-apartman-v-1-patre.jpg" alt="Apartmán v 1. patře" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="4" data-popis="Jídelní a obývací část · Pokoj č. 8">
+          <img src="photos/lada-05-pokoj-c-8.jpg" alt="Jídelní a obývací část · Pokoj č. 8" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="5" data-popis="Jídelní a obývací část · Pokoj č. 8">
+          <img src="photos/lada-06-pokoj-c-8.jpg" alt="Jídelní a obývací část · Pokoj č. 8" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="6" data-popis="Pokoj č. 2">
+          <img src="photos/lada-07-pokoj-c-2.jpg" alt="Pokoj č. 2" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="7" data-popis="Vstup do apartmánu · Pokoj č. 8">
+          <img src="photos/lada-08-pokoj-c-8.jpg" alt="Vstup do apartmánu · Pokoj č. 8" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="8" data-popis="Ložnice · Pokoj č. 8">
+          <img src="photos/lada-09-pokoj-c-8.jpg" alt="Ložnice · Pokoj č. 8" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="9" data-popis="Ložnice · Pokoj č. 8">
+          <img src="photos/lada-10-pokoj-c-8.jpg" alt="Ložnice · Pokoj č. 8" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="10" data-popis="Pokoj č. 8">
+          <img src="photos/lada-11-pokoj-c-8.jpg" alt="Pokoj č. 8" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="11" data-popis="Koupelna · Pokoj č. 8">
+          <img src="photos/lada-12-pokoj-c-8.jpg" alt="Koupelna · Pokoj č. 8" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="12" data-popis="Ložnice · Pokoj č. 9">
+          <img src="photos/lada-13-pokoj-c-9.jpg" alt="Ložnice · Pokoj č. 9" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="13" data-popis="Předsíň · Pokoj č. 9">
+          <img src="photos/lada-14-pokoj-c-9.jpg" alt="Předsíň · Pokoj č. 9" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="14" data-popis="Koupelna · Pokoj č. 9">
+          <img src="photos/lada-15-pokoj-c-9.jpg" alt="Koupelna · Pokoj č. 9" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="15" data-popis="Pokoj č. 2">
+          <img src="photos/lada-16-pokoj-c-2.jpg" alt="Pokoj č. 2" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="16" data-popis="Hlavní budova · Penzion a interiér">
+          <img src="photos/lada-17-penzion-a-interier.jpg" alt="Hlavní budova · Penzion a interiér" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="17" data-popis="Penzion a interiér">
+          <img src="photos/lada-18-penzion-a-interier.jpg" alt="Penzion a interiér" loading="lazy" decoding="async">
+        </figure>
+        <figure class="gal-item" data-gal="18" data-popis="Pokoj č. 2">
+          <img src="photos/lada-19-pokoj-c-2.jpg" alt="Pokoj č. 2" loading="lazy" decoding="async">
+        </figure>
+    </div>
+  </div>
+</section>
+
+<!-- lightbox galerie -->
+<div class="gal-box" id="galBox" role="dialog" aria-modal="true" aria-label="Zvětšená fotka" hidden>
+  <button class="gal-zavrit" id="galZavrit" type="button" aria-label="Zavřít">&times;</button>
+  <button class="gal-sip gal-sip--vlevo" id="galVlevo" type="button" aria-label="Předchozí">&#8249;</button>
+  <figure class="gal-box-in">
+    <img id="galObr" src="" alt="">
+    <figcaption id="galPopis"></figcaption>
+  </figure>
+  <button class="gal-sip gal-sip--vpravo" id="galVpravo" type="button" aria-label="Další">&#8250;</button>
+</div>
+
+<!-- ===== OKOLÍ ===== -->
+<section class="around" id="okoli">
+  <div class="container">
+    <div class="around-header" data-r>
+      <div class="kicker">Co najdete v okolí</div>
+      <h2>Klíše a okolí</h2>
+      <p>Penzion leží v klidné vilové čtvrti, a přesto máte všechno na dosah — přírodu, sport i centrum města.</p>
+    </div>
+    <div class="around-grid">
+      <div class="around-card" data-r>
+        <div class="around-head">
+          <div class="around-icon">🌳</div>
+          <h3>Příroda a sport</h3>
+        </div>
+        <ul class="around-list">
+          <li class="around-item"><span class="around-item-name">Městský park</span><span class="around-item-dist">v okolí</span></li>
+          <li class="around-item"><span class="around-item-name">Cyklostezka podél Labe</span><span class="around-item-dist">v okolí</span></li>
+          <li class="around-item"><span class="around-item-name">Plavecký stadion</span><span class="around-item-dist">v okolí</span></li>
+          <li class="around-item"><span class="around-item-name">Zimní stadion</span><span class="around-item-dist">v okolí</span></li>
+        </ul>
+      </div>
+      <div class="around-card" data-r>
+        <div class="around-head">
+          <div class="around-icon">🧭</div>
+          <h3>Doprava a výlety</h3>
+        </div>
+        <ul class="around-list">
+          <li class="around-item"><span class="around-item-name">Centrum Ústí nad Labem</span><span class="around-item-dist">15 min pěšky</span></li>
+          <li class="around-item"><span class="around-item-name">Vzdálenost od centra</span><span class="around-item-dist">1,5 km</span></li>
+          <li class="around-item"><span class="around-item-name">Lyžařské středisko Telnice</span><span class="around-item-dist">v zimě</span></li>
+          <li class="around-item"><span class="around-item-name">Parkování u penzionu</span><span class="around-item-dist">zdarma</span></li>
+        </ul>
+      </div>
+      <div class="around-card around-card--photos" data-r>
+        <div class="around-head">
+          <div class="around-icon">📸</div>
+          <h3>Z penzionu</h3>
+        </div>
+        <div class="around-photos">
+          <div class="around-photo"><img src="photos/apartman-patro.jpg" alt="Apartmán v penzionu Lada" loading="lazy" /></div>
+          <div class="around-photo"><img src="photos/koupelna.jpg" alt="Koupelna v penzionu Lada" loading="lazy" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RECENZE MARQUEE ===== -->
+<section class="testimonials" id="cenik">
+  <div class="container">
+    <div class="testi-header" data-r>
+      <div class="kicker">Ceník</div>
+      <h2>Ceny za ubytování</h2>
+      <div class="testi-meta">
+        <span>Ceny jsou za pokoj a noc, bez snídaně</span>
+      </div>
+    </div>
+    <div class="pricelist" data-r>
+      <div class="price-row"><span class="pname">Jednolůžkový pokoj</span><span class="pval">769 Kč</span></div>
+      <div class="price-row"><span class="pname">Dvoulůžkový pokoj</span><span class="pval">919 Kč</span></div>
+      <div class="price-row"><span class="pname">1 osoba ve dvoulůžkovém pokoji</span><span class="pval">799–849 Kč</span></div>
+      <div class="price-row"><span class="pname">Třílůžkový pokoj (2 osoby)</span><span class="pval">919 Kč</span></div>
+      <div class="price-row"><span class="pname">1 osoba ve třílůžkovém pokoji</span><span class="pval">799–849 Kč</span></div>
+      <div class="price-row"><span class="pname">Dvoulůžkový apartmán v suterénu</span><span class="pval">919 Kč</span></div>
+      <div class="price-row"><span class="pname">Třílůžkový apartmán v suterénu</span><span class="pval">1 109 Kč</span></div>
+      <div class="price-row"><span class="pname">Apartmán v 1. patře (2–3 osoby)</span><span class="pval">1 079–1 299 Kč</span></div>
+    </div>
+    <p class="price-note" data-r>
+      <strong>Ubytovací poplatek</strong> 30 Kč/osobu se připočítává k ceně. &nbsp;•&nbsp;
+      <strong>Snídaně</strong> po dohodě, kontinentální „na pokoj" 100 Kč/osobu. &nbsp;•&nbsp;
+      <strong>Parkování a wifi</strong> zatím zdarma. &nbsp;•&nbsp; Přijímáme <strong>platební karty</strong>, platba za ubytování při příjezdu. &nbsp;•&nbsp;
+      Storno 2 dny předem 50 % z první noci, 1 den předem nebo nedojezd 100 %.
+    </p>
+  </div>
+</section>
+
+<!-- ===== KONTAKT ===== -->
+<section class="contact" id="kontakt">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-text" data-r>
+        <div class="kicker">Kontakt & Rezervace</div>
+        <h2>Rezervujte pobyt v penzionu Lada</h2>
+        <p>Rezervace i dotazy vyřídíme telefonicky nebo e-mailem — ráda vám poradím a domluvíme termín. Těším se na vás, Lada Heilmannová.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <small>Adresa</small>
+              <strong>Balbínova 2/161, 400 01 Ústí nad Labem – Klíše</strong>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <small>Telefon</small>
+              <strong><a href="tel:+420602410569">+420 602 410 569</a></strong>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <small>Email</small>
+              <strong><a href="mailto:penzionlada@volny.cz">penzionlada@volny.cz</a></strong>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <small>Check-in / Check-out</small>
+              <strong>Check-in od 13:00 · Check-out do 11:00</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-map" data-r>
+        <iframe
+          src="https://maps.google.com/maps?q=Balb%C3%ADnova+2%2F161%2C+400+01+%C3%9Ast%C3%AD+nad+Labem&output=embed"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa Penzion Lada"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="brand">Penzion Lada</a>
+        <p>Klidné ubytování v secesní vile z roku 1905.<br>Balbínova 2/161, 400 01 Ústí nad Labem – Klíše</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigace</h4>
+        <ul>
+          <li><a href="#pokoje">Pokoje</a></li>
+          <li><a href="#onas">O nás</a></li>
+          <li><a href="#okoli">Okolí</a></li>
+          <li><a href="#cenik">Ceník</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+420602410569">+420 602 410 569</a></li>
+          <li><a href="mailto:penzionlada@volny.cz">penzionlada@volny.cz</a></li>
+          <li>Balbínova 2/161, Ústí nad Labem</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Penzion Lada</span>
+      <span>Web od <a href="https://strankyprovas.cz">StránkyProVás</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JS ===== -->
+<script>
+  /* --- Nav scroll --- */
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+  /* --- Hamburger --- */
+  const hambBtn = document.getElementById('hambBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  hambBtn.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    hambBtn.setAttribute('aria-expanded', open);
+  });
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    hambBtn.setAttribute('aria-expanded', false);
+  }));
+
+  /* --- Reveal --- */
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-r]').forEach(el => revObs.observe(el));
+
+
+  /* --- Recenze marquee duplikace --- */
+  const track = document.getElementById('revTrack');
+  if (track) {
+    const cards = Array.from(track.children);
+    cards.forEach(card => track.appendChild(card.cloneNode(true)));
+  }
+
+  /* ===== GALERIE – lightbox bez knihovny ===== */
+  (function(){
+    var mrizka = document.getElementById('galMrizka');
+    if (!mrizka) return;
+    var box    = document.getElementById('galBox');
+    var obr    = document.getElementById('galObr');
+    var popis  = document.getElementById('galPopis');
+    var polozky = Array.prototype.slice.call(mrizka.querySelectorAll('.gal-item'));
+    var index = 0;
+
+    function ukaz(i){
+      if (i < 0) i = polozky.length - 1;
+      if (i >= polozky.length) i = 0;
+      index = i;
+      var f = polozky[i];
+      obr.src = f.querySelector('img').getAttribute('src');
+      obr.alt = f.getAttribute('data-popis') || '';
+      popis.textContent = f.getAttribute('data-popis') || '';
+    }
+    function otevri(i){ ukaz(i); box.hidden = false; document.body.style.overflow = 'hidden'; }
+    function zavri(){ box.hidden = true; document.body.style.overflow = ''; obr.src = ''; }
+
+    polozky.forEach(function(f, i){ f.addEventListener('click', function(){ otevri(i); }); });
+    document.getElementById('galZavrit').addEventListener('click', zavri);
+    document.getElementById('galVlevo').addEventListener('click', function(e){ e.stopPropagation(); ukaz(index - 1); });
+    document.getElementById('galVpravo').addEventListener('click', function(e){ e.stopPropagation(); ukaz(index + 1); });
+    box.addEventListener('click', function(e){ if (e.target === box) zavri(); });
+    document.addEventListener('keydown', function(e){
+      if (box.hidden) return;
+      if (e.key === 'Escape') zavri();
+      if (e.key === 'ArrowLeft') ukaz(index - 1);
+      if (e.key === 'ArrowRight') ukaz(index + 1);
+    });
+  })();
+</script>
+
+</body>
+</html>
